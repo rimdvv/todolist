@@ -1,38 +1,108 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app {
+  font-family: 'Poppins';
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  gap: 73px;
+  width: 1007px;
+  height: 617px;
+  margin: auto;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.title {
+  color: #353535;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 8px;
+}
+
+.box {
+  display: flex;
+  flex-direction: row;
   align-items: center;
+  padding: 8px 8px;
+  width: 300px;
+  height: 24px;
+  border-style: none;
+  background: #f7f7f7;
+  border-radius: 16px;
+}
+
+.box::placeholder {
+  padding-left: 16px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+}
+.form {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  padding: 8px;
+  gap: 40px;
+
+  width: 1007px;
+  height: 62px;
+}
+
+.button {
+  font-family: 'Poppins';
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px;
+  width: 111px;
+  height: 46px;
+  background: #58c187;
+  border-radius: 20px;
+  border-style: none;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.work {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 16px;
+  position: absolute;
+  width: 1007px;
+  height: 172px;
+  left: 252px;
+  top: 214px;
+  order: 1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.title-work {
+  color: #353535;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 8px;
+  gap: 8px;
+}
+
+.done {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 16px;
+
+  width: 1007px;
+  height: 172px;
+  order: 2;
 }
