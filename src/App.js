@@ -4,35 +4,50 @@ import '@fontsource/poppins';
 import { v4 as uuidv4 } from 'uuid';
 
 export default function App() {
-  const [toDo, setToDo] = useState('');
   const [toDos, setToDos] = useState([
     {
       id: uuidv4(),
       title: 'react',
       task: 'finish toy project',
-      status: 'isworking',
+      isDone: false,
     },
   ]);
-  const { id, title, task, status } = toDo;
 
-  const onChange = (e) => {
-    const { name, value } = e.target;
-    setToDo({ ...toDo, [name]: value });
+  const [title, setTitle] = useState('');
+  const [task, setTask] = useState('');
+
+  const titleonChange = (e) => {
+    setTitle(e.target.value);
   };
+
+  const taskonChange = (e) => {
+    setTask(e.target.value);
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
-    if (toDo.title === '' || toDo.task === '') {
+    if (title === '' || task === '') {
       return;
     }
-    setToDos((prev) => [...prev, toDo]);
-    setToDo({ title: '', task: '' });
+    const newtoDo = {
+      id: uuidv4(),
+      title,
+      task,
+      isDone: false,
+    };
+    setToDos((prev) => [...prev, newtoDo]);
+    setTitle('');
+    setTask('');
   };
   const handleDelete = (id) => {
     setToDos(toDos.filter((toDo) => toDo.id !== id));
   };
 
-  const handleDone = (status) => {
-    setToDo({ status: 'done' });
+  const handleStatus = (id) => {
+    const donetodo = toDos.map((item) =>
+      item.id === id ? { ...item, isDone: !item.isDone } : item
+    );
+    setToDos(donetodo);
   };
 
   return (
@@ -42,7 +57,7 @@ export default function App() {
         <form onSubmit={onSubmit} className='form'>
           <input
             className='box'
-            onChange={onChange}
+            onChange={titleonChange}
             name='title'
             type='text'
             value={title}
@@ -50,7 +65,7 @@ export default function App() {
           />
           <input
             className='box'
-            onChange={onChange}
+            onChange={taskonChange}
             name='task'
             type='text'
             value={task}
@@ -63,26 +78,28 @@ export default function App() {
         <h2 className='title-work'>Working on it 🔥</h2>
         <div>
           <ul>
-            {toDos.map((toDo) => (
-              <li className='list-row' key={toDo.id}>
-                <div>{toDo.title}</div>
-                <div>{toDo.task}</div>
-                <div className='buttons'>
-                  <button
-                    className='button-done'
-                    onClick={() => handleDone(toDo.status)}
-                  >
-                    done
-                  </button>
-                  <button
-                    className='button-delete'
-                    onClick={() => handleDelete(toDo.id)}
-                  >
-                    delete
-                  </button>
-                </div>
-              </li>
-            ))}
+            {toDos
+              .filter((item) => !item.isDone)
+              .map((item) => (
+                <li className='list-row' key={item.id}>
+                  <div>{item.title}</div>
+                  <div>{item.task}</div>
+                  <div className='buttons'>
+                    <button
+                      className='button-done'
+                      onClick={() => handleStatus(item.id)}
+                    >
+                      done
+                    </button>
+                    <button
+                      className='button-delete'
+                      onClick={() => handleDelete(item.id)}
+                    >
+                      delete
+                    </button>
+                  </div>
+                </li>
+              ))}
           </ul>
         </div>
       </div>
@@ -90,28 +107,28 @@ export default function App() {
         <h2 className='title-work'>Done 🎉</h2>
         <div>
           <ul>
-            {toDo.status === 'done'
-              ? toDos.filter((toDo) => (
-                  <li className='list-row' key={toDo.id}>
-                    <div>{toDo.title}</div>
-                    <div>{toDo.task}</div>
-                    <div className='buttons'>
-                      <button
-                        className='button-done'
-                        onClick={() => handleDone(toDo.status)}
-                      >
-                        done
-                      </button>
-                      <button
-                        className='button-delete'
-                        onClick={() => handleDelete(toDo.id)}
-                      >
-                        delete
-                      </button>
-                    </div>
-                  </li>
-                ))
-              : ''}
+            {toDos
+              .filter((item) => item.isDone)
+              .map((item) => (
+                <li className='list-row' key={item.id}>
+                  <div>{item.title}</div>
+                  <div>{item.task}</div>
+                  <div className='buttons'>
+                    <button
+                      className='button-notdone'
+                      onClick={() => handleStatus(item.id)}
+                    >
+                      not done
+                    </button>
+                    <button
+                      className='button-delete'
+                      onClick={() => handleDelete(item.id)}
+                    >
+                      delete
+                    </button>
+                  </div>
+                </li>
+              ))}
           </ul>
         </div>
       </div>
