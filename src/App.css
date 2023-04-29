@@ -61,7 +61,7 @@
   font-size: 16px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 16px 40px;
   width: 111px;
@@ -76,14 +76,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0px;
-  gap: 16px;
-  position: absolute;
-  width: 1007px;
-  height: 172px;
-  left: 252px;
-  top: 214px;
-  order: 1;
 }
 
 .title-work {
@@ -91,18 +83,63 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  padding: 8px;
-  gap: 8px;
 }
 
 .done {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0px;
-  gap: 16px;
+  margin-bottom: 40%;
+}
 
+.button-done {
+  font-family: 'Poppins';
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 40px;
+  width: 111px;
+  height: 46px;
+  background: #58c187;
+  border-radius: 20px;
+  border-style: none;
+  color: white;
+}
+
+.button-delete {
+  font-family: 'Poppins';
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 40px;
+  width: 111px;
+  height: 46px;
+  background: #bcbebd;
+  border-radius: 20px;
+  border-style: none;
+  color: white;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
+.list-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 8px;
+  gap: 40px;
   width: 1007px;
-  height: 172px;
-  order: 2;
+  height: 46px;
+  margin-bottom: 4px;
 }
