@@ -50,10 +50,13 @@ const initialState = {
 };
 
 // reducer(input로 두가지 받음! state과 action)
-const todo = (state = initialState, action) => {
+const todos = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TODO:
-      return { ...state, todos: [...state.todos, action.payload] };
+      return {
+        ...state,
+        todos: [...state.todos, action.payload],
+      };
     case DELETE_TODO:
       return {
         ...state,
@@ -66,7 +69,7 @@ const todo = (state = initialState, action) => {
           if (todo.id === action.payload) {
             return { ...todo, isDone: !todo.isDone };
           } else {
-            return { ...todo };
+            return todo;
           }
         }),
       };
@@ -81,4 +84,4 @@ const todo = (state = initialState, action) => {
 };
 
 // 모듈파일에서는 리듀서를 export default 한다.
-export default todo;
+export default todos;

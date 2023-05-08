@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import '../App.css';
+import '../../../App.css';
 import '@fontsource/poppins';
 import { v4 as uuidv4 } from 'uuid';
-import { addTodo } from '../redux/modules/todo';
+import { addTodo } from '../../../redux/modules/todos.js';
 import { useDispatch } from 'react-redux';
 
 export default function Form() {

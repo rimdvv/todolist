@@ -1,5 +1,5 @@
-import Form from '../component/Form';
-import List from '../component/List';
+import Form from '../features/todos/components/Form';
+import List from '../features/todos/components/List';
 
 const Home = () => {
   return (
