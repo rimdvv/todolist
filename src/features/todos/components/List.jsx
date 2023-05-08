@@ -2,6 +2,7 @@ import '../../../App.css';
 import '@fontsource/poppins';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteTodo, toggleStatusTodo } from '../../../redux/modules/todos.js';
+import { Link } from 'react-router-dom';
 
 export default function List() {
   const dispatch = useDispatch();
@@ -20,6 +21,9 @@ export default function List() {
               if (!todo.isDone) {
                 return (
                   <li className='list-row' key={todo.id}>
+                    <Link to={`/${todo.id}`}>
+                      <div>🔍</div>
+                    </Link>
                     <div>{todo.title}</div>
                     <div>{todo.task}</div>
                     <div className='buttons'>
@@ -38,6 +42,8 @@ export default function List() {
                     </div>
                   </li>
                 );
+              } else {
+                return null;
               }
             })}
           </ul>
@@ -51,6 +57,9 @@ export default function List() {
               if (todo.isDone) {
                 return (
                   <li className='list-row' key={todo.id}>
+                    <Link to={`/${todo.id}`}>
+                      <div>🔍</div>
+                    </Link>
                     <div>{todo.title}</div>
                     <div>{todo.task}</div>
                     <div className='buttons'>
@@ -69,6 +78,8 @@ export default function List() {
                     </div>
                   </li>
                 );
+              } else {
+                return null;
               }
             })}
           </ul>
