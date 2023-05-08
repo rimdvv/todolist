@@ -11,43 +11,6 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function List() {
-  const [toDos, setToDos] = useState([
-    {
-      id: uuidv4(),
-      title: 'react',
-      task: 'finish toy project',
-      isDone: false,
-    },
-  ]);
-
-  const [title, setTitle] = useState('');
-  const [task, setTask] = useState('');
-  const dispatch = useDispatch();
-  const todo = useSelector((state) => state.todo.todo);
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    if (title === '' || task === '') {
-      return;
-    }
-    // const newtoDo = {
-    //   id: uuidv4(),
-    //   title,
-    //   task,
-    //   isDone: false,
-    // };
-    // setToDos((prev) => [...prev, newtoDo]);
-    dispatch(
-      addTodo({
-        id: uuidv4(),
-        title,
-        task,
-        isDone: false,
-      })
-    );
-    setTitle('');
-    setTask('');
-  };
   // const handleDelete = (id) => {
   //   setToDos(toDos.filter((toDo) => toDo.id !== id));
   // };
