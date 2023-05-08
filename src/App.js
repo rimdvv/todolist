@@ -2,53 +2,57 @@ import { useState } from 'react';
 import './App.css';
 import '@fontsource/poppins';
 import { v4 as uuidv4 } from 'uuid';
+import { addTodo } from './redux/modules/todo';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function App() {
-  const [toDos, setToDos] = useState([
-    {
-      id: uuidv4(),
-      title: 'react',
-      task: 'finish toy project',
-      isDone: false,
-    },
-  ]);
+  // const [toDos, setToDos] = useState([
+  //   {
+  //     id: uuidv4(),
+  //     title: 'react',
+  //     task: 'finish toy project',
+  //     isDone: false,
+  //   },
+  // ]);
 
   const [title, setTitle] = useState('');
   const [task, setTask] = useState('');
-
-  const titleonChange = (e) => {
-    setTitle(e.target.value);
-  };
-
-  const taskonChange = (e) => {
-    setTask(e.target.value);
-  };
+  const dispatch = useDispatch();
+  const todo = useSelector((state) => state.todo.todo);
 
   const onSubmit = (e) => {
     e.preventDefault();
     if (title === '' || task === '') {
       return;
     }
-    const newtoDo = {
-      id: uuidv4(),
-      title,
-      task,
-      isDone: false,
-    };
-    setToDos((prev) => [...prev, newtoDo]);
+    // const newtoDo = {
+    //   id: uuidv4(),
+    //   title,
+    //   task,
+    //   isDone: false,
+    // };
+    // setToDos((prev) => [...prev, newtoDo]);
+    dispatch(
+      addTodo({
+        id: uuidv4(),
+        title,
+        task,
+        isDone: false,
+      })
+    );
     setTitle('');
     setTask('');
   };
-  const handleDelete = (id) => {
-    setToDos(toDos.filter((toDo) => toDo.id !== id));
-  };
+  // const handleDelete = (id) => {
+  //   setToDos(toDos.filter((toDo) => toDo.id !== id));
+  // };
 
-  const handleStatus = (id) => {
-    const donetodo = toDos.map((item) =>
-      item.id === id ? { ...item, isDone: !item.isDone } : item
-    );
-    setToDos(donetodo);
-  };
+  // const handleStatus = (id) => {
+  //   const donetodo = toDos.map((item) =>
+  //     item.id === id ? { ...item, isDone: !item.isDone } : item
+  //   );
+  //   setToDos(donetodo);
+  // };
 
   return (
     <div className='app'>
@@ -57,7 +61,9 @@ export default function App() {
         <form onSubmit={onSubmit} className='form'>
           <input
             className='box'
-            onChange={titleonChange}
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
             name='title'
             type='text'
             value={title}
@@ -65,7 +71,9 @@ export default function App() {
           />
           <input
             className='box'
-            onChange={taskonChange}
+            onChange={(e) => {
+              setTask(e.target.value);
+            }}
             name='task'
             type='text'
             value={task}
