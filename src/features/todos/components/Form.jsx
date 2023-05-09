@@ -4,6 +4,7 @@ import '@fontsource/poppins';
 import { v4 as uuidv4 } from 'uuid';
 import { addTodo } from '../../../redux/modules/todos.js';
 import { useDispatch } from 'react-redux';
+import { styled } from 'styled-components';
 
 export default function Form() {
   const [todo, setTodo] = useState({
@@ -35,29 +36,49 @@ export default function Form() {
   };
 
   return (
-    <div className='app'>
-      <div className='top'>
-        <h1 className='title'>MY TASKS</h1>
-        <form onSubmit={onSubmitHandler} className='form'>
-          <input
-            className='box'
-            type='text'
-            name='title'
-            value={todo.title}
-            onChange={onChangeHandler}
-            placeholder='Add title..'
-          />
-          <input
-            className='box'
-            type='text'
-            name='task'
-            value={todo.task}
-            onChange={onChangeHandler}
-            placeholder='Add task..'
-          />
-          <button className='button'>Add</button>
-        </form>
-      </div>
-    </div>
+    <>
+      <StForm onSubmit={onSubmitHandler}>
+        <StInputBox
+          className='box'
+          type='text'
+          name='title'
+          value={todo.title}
+          onChange={onChangeHandler}
+          placeholder='Add title..'
+        />
+        <StInputBox
+          className='box'
+          type='text'
+          name='task'
+          value={todo.task}
+          onChange={onChangeHandler}
+          placeholder='Add task..'
+        />
+        <button className='button'>Add</button>
+      </StForm>
+    </>
   );
 }
+
+const StForm = styled.form`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  gap: 40px;
+  width: 1007px;
+  height: 62px;
+`;
+
+const StInputBox = styled.input`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 8px;
+  width: 300px;
+  height: 24px;
+  border-style: none;
+  background: #f7f7f7;
+  border-radius: 16px;
+`;

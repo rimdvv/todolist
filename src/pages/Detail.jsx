@@ -21,7 +21,6 @@ const Detail = () => {
           <div>
             <div>ID :{todo.id}</div>
             <button
-              borderColor='#ddd'
               onClick={() => {
                 navigate('/');
               }}
