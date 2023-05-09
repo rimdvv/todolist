@@ -54,7 +54,7 @@ export default function Form() {
           onChange={onChangeHandler}
           placeholder='Add task..'
         />
-        <button className='button'>Add</button>
+        <StBtn>Add</StBtn>
       </StForm>
     </>
   );
@@ -81,4 +81,21 @@ const StInputBox = styled.input`
   border-style: none;
   background: #f7f7f7;
   border-radius: 16px;
+`;
+
+const StBtn = styled.button`
+  font-family: 'Poppins';
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 40px;
+  width: 111px;
+  height: 46px;
+  background: #58c187;
+  border-radius: 20px;
+  border-style: none;
+  color: white;
 `;

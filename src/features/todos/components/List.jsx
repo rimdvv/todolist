@@ -43,40 +43,34 @@ export default function List() {
         </ul>
       </StWorkContainer>
       <StWorkContainer>
-        <h2 className='title-work'>Done 🎉</h2>
-        <div>
-          <ul>
-            {todos.map((todo) => {
-              if (todo.isDone) {
-                return (
-                  <StListRow key={todo.id}>
-                    <Link to={`/${todo.id}`} style={{ textDecoration: 'none' }}>
-                      <div>🔍</div>
-                    </Link>
-                    <StListRowItem>{todo.title}</StListRowItem>
-                    <StListRowItem>{todo.task}</StListRowItem>
-                    <StButtonGroup>
-                      <button
-                        className='button-notdone'
-                        onClick={() => onToggleStatusTodo(todo.id)}
-                      >
-                        not done
-                      </button>
-                      <button
-                        className='button-delete'
-                        onClick={() => onDeleteTodo(todo.id)}
-                      >
-                        delete
-                      </button>
-                    </StButtonGroup>
-                  </StListRow>
-                );
-              } else {
-                return null;
-              }
-            })}
-          </ul>
-        </div>
+        <StTitle>Done 🎉</StTitle>
+        <ul>
+          {todos.map((todo) => {
+            if (todo.isDone) {
+              return (
+                <StListRow key={todo.id}>
+                  <Link to={`/${todo.id}`} style={{ textDecoration: 'none' }}>
+                    <div>🔍</div>
+                  </Link>
+                  <StListRowItem>{todo.title}</StListRowItem>
+                  <StListRowItem>{todo.task}</StListRowItem>
+                  <StButtonGroup>
+                    <StButtonNotDone
+                      onClick={() => onToggleStatusTodo(todo.id)}
+                    >
+                      not done
+                    </StButtonNotDone>
+                    <StButtonDelete onClick={() => onDeleteTodo(todo.id)}>
+                      delete
+                    </StButtonDelete>
+                  </StButtonGroup>
+                </StListRow>
+              );
+            } else {
+              return null;
+            }
+          })}
+        </ul>
       </StWorkContainer>
     </StListContainer>
   );
